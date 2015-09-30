@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1443641143 source:/home/antoine/GitHub/Tetris/main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<Tableau.h>
+
+1443641120 source:/home/antoine/GitHub/Tetris/src/Tableau.cpp
+	"Tableau.h"
+	<stdio.h>
+	<stdlib.h>
+
+1443641519 /home/antoine/GitHub/Tetris/include/Tableau.h
+	<stdio.h>
+	<stdlib.h>
+
