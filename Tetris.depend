@@ -1,16 +1,24 @@
 # depslib dependency file v1.0
-1443641143 source:/home/antoine/GitHub/Tetris/main.cpp
+1443689505 source:/home/antoine/GitHub/Tetris/main.cpp
 	<iostream>
+	"include/game.h"
+
+1443689752 source:/home/antoine/GitHub/Tetris/src/Tableau.cpp
+	"../include/Tableau.h"
 	<stdio.h>
 	<stdlib.h>
-	<Tableau.h>
 
-1443641120 source:/home/antoine/GitHub/Tetris/src/Tableau.cpp
+1443689206 /home/antoine/GitHub/Tetris/include/Tableau.h
+	<stdio.h>
+	<stdlib.h>
+	<SDL/SDL.h>
+
+1443689206 /home/antoine/GitHub/Tetris/include/game.h
+	<SDL/SDL.h>
 	"Tableau.h"
-	<stdio.h>
-	<stdlib.h>
 
-1443641519 /home/antoine/GitHub/Tetris/include/Tableau.h
-	<stdio.h>
-	<stdlib.h>
+1443689728 source:/home/antoine/GitHub/Tetris/src/game.cpp
+	<SDL/SDL.h>
+	<iostream>
+	"../include/game.h"
 

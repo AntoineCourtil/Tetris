@@ -2,6 +2,7 @@
 #define TABLEAU_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <SDL/SDL.h>
 
 
 
@@ -19,14 +20,16 @@ class Tableau
     public:
         int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR];
         Tableau();
-        void flood(int i, int j, int px, int py, int k, int o, int valeur, bool visite[][TAILLE]);
+        void render(SDL_Surface *screen);
+
+//        void flood(int i, int j, int px, int py, int k, int o, int valeur, bool visite[][TAILLE]);
         void floodFill(int i, int j, int px, int py, int k, int o, int valeur);
-            void setpieceActuelle(Piece p);
-            Piece getpieceActuelle();
+//            void setpieceActuelle(Piece p);
+//            Piece getpieceActuelle();
         //virtual ~Tableau();
     //protected:
     private:
-        Piece pieceActuelle;
+//        Piece pieceActuelle;
 };
 
 #endif // TABLEAU_H
