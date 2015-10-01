@@ -3,7 +3,7 @@
 	<iostream>
 	"include/game.h"
 
-1443690940 source:/home/antoine/GitHub/Tetris/src/Tableau.cpp
+1443691853 source:/home/antoine/GitHub/Tetris/src/Tableau.cpp
 	"../include/Tableau.h"
 	<stdio.h>
 	<stdlib.h>
@@ -21,4 +21,9 @@
 	<SDL/SDL.h>
 	<iostream>
 	"../include/game.h"
+
+1443692123 source:/home/antoine/GitHub/Tetris/src/formes.cpp
+	"../include/formes.h"
+
+1443692129 /home/antoine/GitHub/Tetris/include/formes.h
 

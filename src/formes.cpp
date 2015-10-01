@@ -1,6 +1,6 @@
-#include "formes.h"
+#include "../include/formes.h"
 
-formes::formes()
+/*formes::formes()
 {
     //ctor
 }
@@ -9,3 +9,4 @@ formes::~formes()
 {
     //dtor
 }
+*/

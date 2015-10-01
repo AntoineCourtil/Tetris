@@ -190,7 +190,7 @@ static int pieces[NB_TYPES][NB_ROTATIONS][TAILLE][TAILLE]=
             {0,0,0,0}
         }
     }
-}
+};
 
 
 #endif // FORMES_H

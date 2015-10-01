@@ -1,5 +1,6 @@
 #include <iostream>
 #include "include/game.h"
+#include "include/formes.h"
 
 using namespace std;
 
