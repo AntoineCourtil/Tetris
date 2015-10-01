@@ -36,9 +36,11 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Tableau.h" />
+		<Unit filename="include/formes.h" />
 		<Unit filename="include/game.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Tableau.cpp" />
+		<Unit filename="src/formes.cpp" />
 		<Unit filename="src/game.cpp" />
 		<Extensions>
 			<code_completion />

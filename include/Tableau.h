@@ -23,7 +23,7 @@ class Tableau
         void render(SDL_Surface *screen);
 
 //        void flood(int i, int j, int px, int py, int k, int o, int valeur, bool visite[][TAILLE]);
-        void floodFill(int i, int j, int px, int py, int k, int o, int valeur);
+//        void floodFill(int i, int j, int px, int py, int k, int o, int valeur);
 //            void setpieceActuelle(Piece p);
 //            Piece getpieceActuelle();
         //virtual ~Tableau();
