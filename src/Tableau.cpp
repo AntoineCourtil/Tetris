@@ -28,7 +28,7 @@ void Tableau::render(SDL_Surface *screen) {
             rect.h = sq_h-1;
             rect.x = i*sq_w;
             rect.y = j*sq_h;
-            SDL_FillRect(screen, &rect, SDL_MapRGB(screen->format, 255,127,80));
+            SDL_FillRect(screen, &rect, SDL_MapRGB(screen->format, 0,0,128));
         }
     }
 }
