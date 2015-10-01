@@ -1,4 +1,4 @@
-#include "Tableau.h"
+#include "../include/Tableau.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -31,20 +31,6 @@ void Tableau::render(SDL_Surface *screen) {
             SDL_FillRect(screen, &rect, SDL_MapRGB(screen->format, 255,127,80));
         }
     }
-
-
-/*
-    for (int i=0; i<(int)pieces_.size(); i++) {
-        for (int j=0; j<(int)pieces_[i].size(); j++) {
-            Vec2i pt = pieces_[i].pos + pieces_[i].cell(j)*square_size;
-            SDL_Rect tmp;
-            tmp.w = tmp.h = square_size-1;
-            tmp.x = pt.x;
-            tmp.y = pt.y;
-            SDL_FillRect(screen, &tmp, SDL_MapRGB(screen->format, pieces_[i].rgb[0], pieces_[i].rgb[1], pieces_[i].rgb[2]));
-        }
-    }
-*/
 }
 
 

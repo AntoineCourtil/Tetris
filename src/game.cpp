@@ -1,6 +1,6 @@
 #include <SDL/SDL.h>
 #include <iostream>
-#include "game.h"
+#include "../include/game.h"
 
 Game::Game() : running_(false), tableau_() {
 }
