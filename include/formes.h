@@ -1,10 +1,20 @@
 #ifndef FORMES_H
 #define FORMES_H
+#include <SDL/SDL.h>
 
 
 const int NB_TYPES=7; //nombres de types de pièces que l'on a
 const int NB_ROTATIONS=4; // nombre de rotations pour chaques pièces
 const int TAILLE=4; //taille de la matrice à manipuler
+
+class formes {
+public:
+    formes();
+    void draw(int piece[4][4], SDL_Surface *screen);
+
+private:
+
+};
 
 static int pieces[NB_TYPES][NB_ROTATIONS][TAILLE][TAILLE]=
 {//tableau avec toutes les pièces

@@ -1,6 +1,7 @@
 #include <SDL/SDL.h>
 #include <iostream>
 #include "../include/game.h"
+#include "../include/formes.h"
 
 Game::Game() : running_(false), tableau_() {
 }
@@ -42,6 +43,8 @@ void Game::handle_events() {
 void Game::draw() {
     SDL_FillRect(sdl_screen_, NULL, SDL_MapRGB(sdl_screen_->format, 255, 255, 255));
     tableau_.render(sdl_screen_);
+    formes formes_;
+    formes_.draw(pieces[0][0],sdl_screen_);
     SDL_Flip(sdl_screen_);
 }
 

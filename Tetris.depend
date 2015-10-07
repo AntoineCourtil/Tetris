@@ -1,14 +1,15 @@
 # depslib dependency file v1.0
-1443691707 source:/home/antoine/GitHub/Tetris/main.cpp
+1443692143 source:/home/antoine/GitHub/Tetris/main.cpp
 	<iostream>
 	"include/game.h"
+	"include/formes.h"
 
 1443691853 source:/home/antoine/GitHub/Tetris/src/Tableau.cpp
 	"../include/Tableau.h"
 	<stdio.h>
 	<stdlib.h>
 
-1443689206 /home/antoine/GitHub/Tetris/include/Tableau.h
+1443693100 /home/antoine/GitHub/Tetris/include/Tableau.h
 	<stdio.h>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -17,13 +18,18 @@
 	<SDL/SDL.h>
 	"Tableau.h"
 
-1443689728 source:/home/antoine/GitHub/Tetris/src/game.cpp
+1444223732 source:/home/antoine/GitHub/Tetris/src/game.cpp
 	<SDL/SDL.h>
 	<iostream>
 	"../include/game.h"
-
-1443692123 source:/home/antoine/GitHub/Tetris/src/formes.cpp
 	"../include/formes.h"
 
-1443692129 /home/antoine/GitHub/Tetris/include/formes.h
+1444223867 source:/home/antoine/GitHub/Tetris/src/formes.cpp
+	"../include/formes.h"
+	"../include/Tableau.h"
+	<stdio.h>
+	<stdlib.h>
+
+1444223827 /home/antoine/GitHub/Tetris/include/formes.h
+	<SDL/SDL.h>
 
