@@ -53,7 +53,7 @@ void Game::draw() {
         currentPiece=true;
     }
 
-    formes_.draw(pieces[numPiece][0],sdl_screen_);
+    formes_.draw(pieces[numPiece][0],sdl_screen_, 3,0);
     SDL_Flip(sdl_screen_);
 
 }

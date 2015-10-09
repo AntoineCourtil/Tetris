@@ -9,7 +9,7 @@ formes::formes()
     //
 }
 
-void formes::draw(int piece[TAILLE][TAILLE], SDL_Surface *screen)
+void formes::draw(int piece[TAILLE][TAILLE], SDL_Surface *screen, int origine_x, int origine_y)
 {
     //printf("a");
     int i;
@@ -26,8 +26,8 @@ void formes::draw(int piece[TAILLE][TAILLE], SDL_Surface *screen)
                 SDL_Rect rect;
                 rect.w = sq_w-1;
                 rect.h = sq_h-1;
-                rect.x = i*sq_w+3*sq_w;
-                rect.y = j*sq_h;
+                rect.x = i*sq_w+origine_x*sq_w;
+                rect.y = j*sq_h+origine_y*sq_h;
                 SDL_FillRect(screen, &rect, SDL_MapRGB(screen->format, 255,0,0));
             }
             else {
