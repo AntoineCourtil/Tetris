@@ -13,6 +13,7 @@ public:
     void draw();
     void clean();
     bool running();
+    bool currentPiece;
 
 private:
     SDL_Surface* sdl_screen_;
@@ -20,9 +21,9 @@ private:
     int width_;
     int height_;
     int bpp_;
-    bool newPiece;
     Tableau tableau_;
     formes formes_;
+    int numPiece;
 };
 
 #endif
