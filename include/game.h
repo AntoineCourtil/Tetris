@@ -3,6 +3,7 @@
 
 #include <SDL/SDL.h>
 #include "Tableau.h"
+#include "../include/formes.h"
 
 class Game {
 public:
@@ -19,7 +20,9 @@ private:
     int width_;
     int height_;
     int bpp_;
+    bool newPiece;
     Tableau tableau_;
+    formes formes_;
 };
 
 #endif

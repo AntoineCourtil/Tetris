@@ -3,12 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 formes::formes()
 {
     //
 }
 
-void formes::draw(int piece[4][4], SDL_Surface *screen)
+void formes::draw(int piece[TAILLE][TAILLE], SDL_Surface *screen)
 {
     //printf("a");
     int i;

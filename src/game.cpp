@@ -33,18 +33,19 @@ void Game::handle_events() {
     SDL_Event event;
     if (SDL_PollEvent(&event)) {
         running_ = !(SDL_QUIT==event.type || (SDL_KEYDOWN==event.type && SDLK_ESCAPE==event.key.keysym.sym));
-        /*
-         if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
-         }
-         */
+
+         /*if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
+
+         }*/
+
     }
+
 }
 
 void Game::draw() {
     SDL_FillRect(sdl_screen_, NULL, SDL_MapRGB(sdl_screen_->format, 255, 255, 255));
     tableau_.render(sdl_screen_);
-    formes formes_;
-    formes_.draw(pieces[0][0],sdl_screen_);
+    formes_.draw(pieces[rand()%7][0],sdl_screen_);
     SDL_Flip(sdl_screen_);
 }
 

@@ -10,7 +10,7 @@ const int TAILLE=4; //taille de la matrice à manipuler
 class formes {
 public:
     formes();
-    void draw(int piece[4][4], SDL_Surface *screen);
+    void draw(int piece[TAILLE][TAILLE], SDL_Surface *screen);
 
 private:
 

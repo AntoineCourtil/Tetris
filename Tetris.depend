@@ -14,22 +14,23 @@
 	<stdlib.h>
 	<SDL/SDL.h>
 
-1443689206 /home/antoine/GitHub/Tetris/include/game.h
+1444400224 /home/antoine/GitHub/Tetris/include/game.h
 	<SDL/SDL.h>
 	"Tableau.h"
+	"../include/formes.h"
 
-1444223732 source:/home/antoine/GitHub/Tetris/src/game.cpp
+1444226453 source:/home/antoine/GitHub/Tetris/src/game.cpp
 	<SDL/SDL.h>
 	<iostream>
 	"../include/game.h"
 	"../include/formes.h"
 
-1444223867 source:/home/antoine/GitHub/Tetris/src/formes.cpp
+1444226453 source:/home/antoine/GitHub/Tetris/src/formes.cpp
 	"../include/formes.h"
 	"../include/Tableau.h"
 	<stdio.h>
 	<stdlib.h>
 
-1444223827 /home/antoine/GitHub/Tetris/include/formes.h
+1444226453 /home/antoine/GitHub/Tetris/include/formes.h
 	<SDL/SDL.h>
 
