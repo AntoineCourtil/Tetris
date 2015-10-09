@@ -33,12 +33,26 @@ bool Game::running() {
 
 void Game::handle_events() {
     SDL_Event event;
-    if (SDL_PollEvent(&event)) {
-        running_ = !(SDL_QUIT==event.type || (SDL_KEYDOWN==event.type && SDLK_ESCAPE==event.key.keysym.sym));
+    while (SDL_PollEvent(&event)) {
+
+         if (SDL_KEYDOWN==event.type && (SDLK_RIGHT==event.key.keysym.sym) && posX<=TABLEAU_LARGEUR-TAILLE) {
+            posX+=1;
+         }
+         if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym) && posX>1) {
+            posX-=1;
+         }
+
+         if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) && posY<TABLEAU_HAUTEUR-TAILLE) {
+            posY+=1;
+         }
 
          /*if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
 
          }*/
+
+         running_ = !(SDL_QUIT==event.type || (SDL_KEYDOWN==event.type && SDLK_ESCAPE==event.key.keysym.sym));
+
+
 
     }
 
@@ -50,10 +64,12 @@ void Game::draw() {
 
     if (not currentPiece){
         numPiece=rand()%7;
+        posX=3;
+        posY=0;
         currentPiece=true;
     }
 
-    formes_.draw(pieces[numPiece][0],sdl_screen_, 3,0);
+    formes_.draw(pieces[numPiece][0],sdl_screen_, posX, posY);
     SDL_Flip(sdl_screen_);
 
 }

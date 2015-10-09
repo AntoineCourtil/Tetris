@@ -40,3 +40,4 @@ void formes::draw(int piece[TAILLE][TAILLE], SDL_Surface *screen, int origine_x,
 
 }
 
+

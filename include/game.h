@@ -14,6 +14,8 @@ public:
     void clean();
     bool running();
     bool currentPiece;
+    int posX;
+    int posY;
 
 private:
     SDL_Surface* sdl_screen_;

@@ -35,3 +35,39 @@
 1444402360 /home/antoine/GitHub/Tetris/include/formes.h
 	<SDL/SDL.h>
 
+1444402102 source:/home/theophile/GitHub/Tetris/main.cpp
+	<iostream>
+	"include/game.h"
+	"include/formes.h"
+
+1444405346 /home/theophile/GitHub/Tetris/include/game.h
+	<SDL/SDL.h>
+	"Tableau.h"
+	"../include/formes.h"
+
+1444401054 /home/theophile/GitHub/Tetris/include/Tableau.h
+	<stdio.h>
+	<stdlib.h>
+	<SDL/SDL.h>
+
+1444402498 /home/theophile/GitHub/Tetris/include/formes.h
+	<SDL/SDL.h>
+
+1444401054 source:/home/theophile/GitHub/Tetris/src/Tableau.cpp
+	"../include/Tableau.h"
+	<stdio.h>
+	<stdlib.h>
+
+1444403186 source:/home/theophile/GitHub/Tetris/src/formes.cpp
+	"../include/formes.h"
+	"../include/Tableau.h"
+	<stdio.h>
+	<stdlib.h>
+
+1444404738 source:/home/theophile/GitHub/Tetris/src/game.cpp
+	<SDL/SDL.h>
+	<iostream>
+	"../include/game.h"
+	"../include/formes.h"
+	<unistd.h>
+
