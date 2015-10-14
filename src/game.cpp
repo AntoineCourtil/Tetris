@@ -39,11 +39,19 @@ void Game::handle_events() {
             posX+=1;
          }
          if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym) && posX>1) {
+
             posX-=1;
          }
 
          if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) && posY<TABLEAU_HAUTEUR-TAILLE) {
             posY+=1;
+         }
+
+         if (SDL_KEYDOWN==event.type && (SDLK_SPACE==event.key.keysym.sym)){
+            numRotation+=1;
+            if (numRotation>3){
+                numRotation=0;
+            }
          }
 
          /*if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
@@ -66,10 +74,11 @@ void Game::draw() {
         numPiece=rand()%7;
         posX=3;
         posY=0;
+        numRotation=0;
         currentPiece=true;
     }
 
-    formes_.draw(pieces[numPiece][0],sdl_screen_, posX, posY);
+    formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
     SDL_Flip(sdl_screen_);
 
 }
