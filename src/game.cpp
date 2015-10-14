@@ -3,6 +3,7 @@
 #include "../include/game.h"
 #include "../include/formes.h"
 #include <unistd.h>
+#include <time.h>
 
 Game::Game() : running_(false), tableau_() {
 }
@@ -23,6 +24,13 @@ bool Game::init_sdl(const char* title, int width, int height, int bpp) {
     height_ = height;
     bpp_ = bpp;
     currentPiece=false;
+
+    //clock_t this_time=clock();
+    //clock_t last_time=this_time+(NUM_SECONDS * CLOCKS_PER_SEC);
+    last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
+    printf("%d\n",clock());
+    printf("%d\n",last_time);
+    printf("%d\n",NUM_SECONDS * CLOCKS_PER_SEC);
 
     return true;
 }
@@ -59,6 +67,7 @@ void Game::handle_events() {
 }
 
 void Game::draw() {
+
     SDL_FillRect(sdl_screen_, NULL, SDL_MapRGB(sdl_screen_->format, 255, 255, 255));
     tableau_.render(sdl_screen_);
 
@@ -67,6 +76,11 @@ void Game::draw() {
         posX=3;
         posY=0;
         currentPiece=true;
+    }
+
+    if (last_time<clock() && posY<TABLEAU_HAUTEUR-TAILLE){
+        posY+=1;
+        last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
     }
 
     formes_.draw(pieces[numPiece][0],sdl_screen_, posX, posY);

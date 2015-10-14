@@ -4,6 +4,7 @@
 #include <SDL/SDL.h>
 #include "Tableau.h"
 #include "../include/formes.h"
+#include <time.h>
 
 class Game {
 public:
@@ -26,6 +27,8 @@ private:
     Tableau tableau_;
     formes formes_;
     int numPiece;
+    const float NUM_SECONDS = 0.5;
+    clock_t last_time;
 };
 
 #endif
