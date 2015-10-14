@@ -25,12 +25,7 @@ bool Game::init_sdl(const char* title, int width, int height, int bpp) {
     bpp_ = bpp;
     currentPiece=false;
 
-    //clock_t this_time=clock();
-    //clock_t last_time=this_time+(NUM_SECONDS * CLOCKS_PER_SEC);
     last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
-    printf("%d\n",clock());
-    printf("%d\n",last_time);
-    printf("%d\n",NUM_SECONDS * CLOCKS_PER_SEC);
 
     return true;
 }
@@ -47,11 +42,19 @@ void Game::handle_events() {
             posX+=1;
          }
          if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym) && posX>1) {
+
             posX-=1;
          }
 
          if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) && posY<TABLEAU_HAUTEUR-TAILLE) {
             posY+=1;
+         }
+
+         if (SDL_KEYDOWN==event.type && (SDLK_SPACE==event.key.keysym.sym)){
+            numRotation+=1;
+            if (numRotation>3){
+                numRotation=0;
+            }
          }
 
          /*if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
@@ -75,6 +78,7 @@ void Game::draw() {
         numPiece=rand()%7;
         posX=3;
         posY=0;
+        numRotation=0;
         currentPiece=true;
     }
 
@@ -82,8 +86,7 @@ void Game::draw() {
         posY+=1;
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
     }
-
-    formes_.draw(pieces[numPiece][0],sdl_screen_, posX, posY);
+    formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
     SDL_Flip(sdl_screen_);
 
 }

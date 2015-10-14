@@ -68,7 +68,7 @@ static int pieces[NB_TYPES][NB_ROTATIONS][TAILLE][TAILLE]=
             {0,0,2,0},
             {0,0,1,0},
             {0,0,1,0}
-        },
+        }
     },
     {//S
         {

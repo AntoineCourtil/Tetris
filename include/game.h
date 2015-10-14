@@ -17,6 +17,7 @@ public:
     bool currentPiece;
     int posX;
     int posY;
+    int numRotation;
 
 private:
     SDL_Surface* sdl_screen_;
