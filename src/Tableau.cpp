@@ -1,4 +1,5 @@
 #include "../include/Tableau.h"
+#include "../include/game.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,8 +19,8 @@ Tableau::Tableau() {
 void Tableau::render(SDL_Surface *screen) {
     int scr_w = screen->w;
     int scr_h = screen->h;
-    int sq_w  = scr_w/TABLEAU_LARGEUR;
-    int sq_h  = scr_h/TABLEAU_HAUTEUR;
+    int sq_w  = scr_w/JEU_LARGEUR;
+    int sq_h  = scr_h/JEU_HAUTEUR;
 
     for (int i=0; i<TABLEAU_LARGEUR; i++) {
         for (int j=0; j<TABLEAU_HAUTEUR; j++) {
@@ -28,6 +29,11 @@ void Tableau::render(SDL_Surface *screen) {
             rect.h = sq_h-1;
             rect.x = i*sq_w;
             rect.y = j*sq_h;
+            //printf("%d",JEU_LARGEUR);
+            /*rect.w = LARGEUR_CASE-1;
+            rect.h = HAUTEUR_CASE-1;
+            rect.x = i*LARGEUR_CASE;
+            rect.y = j*HAUTEUR_CASE;*/
             SDL_FillRect(screen, &rect, SDL_MapRGB(screen->format, 0,0,128));
         }
     }

@@ -4,7 +4,12 @@
 #include <SDL/SDL.h>
 #include "Tableau.h"
 #include "../include/formes.h"
+#include "../include/informations.h"
 #include <time.h>
+
+
+const int JEU_LARGEUR = 16;
+const int JEU_HAUTEUR = 20;
 
 class Game {
 public:
@@ -18,6 +23,7 @@ public:
     int posX;
     int posY;
     int numRotation;
+    int numNextPiece;
 
 private:
     SDL_Surface* sdl_screen_;
@@ -27,6 +33,7 @@ private:
     int bpp_;
     Tableau tableau_;
     formes formes_;
+    informations informations_;
     int numPiece;
     const float NUM_SECONDS = 0.5;
     clock_t last_time;
