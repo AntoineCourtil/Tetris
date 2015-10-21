@@ -1,7 +1,9 @@
 #include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 #include <iostream>
 #include "../include/game.h"
 #include "../include/formes.h"
+#include "../include/informations.h"
 #include <unistd.h>
 #include <time.h>
 
@@ -26,6 +28,7 @@ bool Game::init_sdl(const char* title, int width, int height, int bpp) {
     currentPiece=false;
 
     last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
+    informations_.load_font();
 
     return true;
 }
@@ -104,12 +107,16 @@ void Game::draw() {
 
     SDL_FillRect(sdl_screen_, NULL, SDL_MapRGB(sdl_screen_->format, 255, 255, 255));
     tableau_.render(sdl_screen_);
+    informations_.render(sdl_screen_,TABLEAU_LARGEUR,0);
+    informations_.texte(sdl_screen_);
 
     if (not currentPiece){
         numPiece=rand()%7;
         posX=3;
         posY=0;
         numRotation=0;
+        numNextPiece=rand()%7;
+        //informations_.nextPiece(sdl_screen_, numNextPiece);
         currentPiece=true;
     }
 
@@ -118,6 +125,7 @@ void Game::draw() {
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
     }
     formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
+    //printf("%d",pieces[numPiece][numRotation][0][0]);
     SDL_Flip(sdl_screen_);
 
 }
@@ -125,5 +133,6 @@ void Game::draw() {
 void Game::clean() {
     if (sdl_screen_) SDL_FreeSurface(sdl_screen_);
     SDL_Quit();
+    TTF_Quit();
 }
 

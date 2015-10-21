@@ -13,9 +13,11 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="SDL" />
+					<Add library="SDL_ttf" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -25,6 +27,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,10 +41,12 @@
 		<Unit filename="include/Tableau.h" />
 		<Unit filename="include/formes.h" />
 		<Unit filename="include/game.h" />
+		<Unit filename="include/informations.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Tableau.cpp" />
 		<Unit filename="src/formes.cpp" />
 		<Unit filename="src/game.cpp" />
+		<Unit filename="src/informations.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
