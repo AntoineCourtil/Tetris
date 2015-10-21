@@ -19,9 +19,9 @@ void formes::draw(int piece[TAILLE][TAILLE], SDL_Surface *screen, int origine_x,
     int sq_w  = scr_w/TABLEAU_LARGEUR;
     int sq_h  = scr_h/TABLEAU_HAUTEUR;
 
-    for(i=0; i<=3; i++){;
-        for(j=0; j<=3; j++){
-            if (piece[i][j]!=0) {
+    for(j=0; j<=3; j++){;
+        for(i=0; i<=3; i++){
+            if (piece[j][i]!=0) {
                 //printf("#");
                 SDL_Rect rect;
                 rect.w = sq_w-1;

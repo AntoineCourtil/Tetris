@@ -38,12 +38,42 @@ void Game::handle_events() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
 
-         if (SDL_KEYDOWN==event.type && (SDLK_RIGHT==event.key.keysym.sym) && posX<=TABLEAU_LARGEUR-TAILLE) {
-            posX+=1;
+         if (SDL_KEYDOWN==event.type && (SDLK_RIGHT==event.key.keysym.sym)) {
+            //printf("%d %d\n",numRotation,posX);
+            if (posX<6){
+                posX+=1;
+            }
+            else{
+                bool estVide=true;
+                for(int k=0;k<4;k++){
+                    if (pieces[numPiece][numRotation][k][posX+1]!=0){
+                        estVide=false;
+                    }
+                }
+                if(estVide==true){
+                    posX+=1;
+                }
+            }
          }
-         if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym) && posX>1) {
+         if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym)) {
+                //printf("%d %d\n",numRotation,posX);
 
-            posX-=1;
+                if (posX>0){
+                    posX-=1;
+                }
+                else {
+                    bool estVide=true;
+                    for(int k=0;k<4;k++){
+                        if (pieces[numPiece][numRotation][k][-posX]!=0){
+                            estVide=false;
+                            printf("%d \n",pieces[numPiece][numRotation][k][-posX]);
+                        }
+                    }
+                    if(estVide==true){
+                        posX-=1;
+                    }
+                }
+
          }
 
          if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) && posY<TABLEAU_HAUTEUR-TAILLE) {
@@ -55,6 +85,7 @@ void Game::handle_events() {
             if (numRotation>3){
                 numRotation=0;
             }
+
          }
 
          /*if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
