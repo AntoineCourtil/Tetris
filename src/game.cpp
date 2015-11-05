@@ -132,8 +132,8 @@ void Game::draw() {
     informations_.texte(sdl_screen_);
 
     if (not currentPiece){
-        //numPiece=rand()%7;
-        numPiece=5;
+        numPiece=rand()%7;
+        //numPiece=5;
         posX=3;
         posY=0;
         numRotation=0;
