@@ -125,6 +125,7 @@ void Game::draw() {
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
     }
     formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
+    formes_.draw(pieces[numNextPiece][0],sdl_screen_, x_nextPiece, y_nextPiece);
     //printf("%d",pieces[numPiece][numRotation][0][0]);
     SDL_Flip(sdl_screen_);
 

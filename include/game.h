@@ -10,6 +10,8 @@
 
 const int JEU_LARGEUR = 16;
 const int JEU_HAUTEUR = 20;
+const int x_nextPiece = 11;
+const int y_nextPiece = 3;
 
 class Game {
 public:
