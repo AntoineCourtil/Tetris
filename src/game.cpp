@@ -49,9 +49,11 @@ void Game::handle_events() {
             else{
                 bool estVide=true;
                 for(int k=0;k<4;k++){
-                    if (pieces[numPiece][numRotation][k][posX+1]!=0){
+                    if (pieces[numPiece][numRotation][k][9-posX]!=0){
                         estVide=false;
+                        //printf("%d %d\n",numRotation,posX);
                     }
+                    printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
                 }
                 if(estVide==true){
                     posX+=1;
@@ -69,8 +71,9 @@ void Game::handle_events() {
                     for(int k=0;k<4;k++){
                         if (pieces[numPiece][numRotation][k][-posX]!=0){
                             estVide=false;
-                            printf("%d \n",pieces[numPiece][numRotation][k][-posX]);
+                            //printf("%d \n",pieces[numPiece][numRotation][k][-posX]);
                         }
+                        printf("%d\n",pieces[numPiece][numRotation][k][-posX]);
                     }
                     if(estVide==true){
                         posX-=1;
@@ -79,8 +82,25 @@ void Game::handle_events() {
 
          }
 
-         if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) && posY<TABLEAU_HAUTEUR-TAILLE) {
-            posY+=1;
+         if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) ) {
+            //posY+=1;
+
+           if (posY<16){
+                posY+=1;
+            }
+            else{
+                bool estVide=true;
+                for(int k=0;k<4;k++){
+                    if (pieces[numPiece][numRotation][19-posY][k]!=0){
+                        estVide=false;
+                        //printf("%d %d\n",numRotation,posX);
+                    }
+                    //printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
+                }
+                if(estVide==true){
+                    posY+=1;
+                }
+            }
          }
 
          if (SDL_KEYDOWN==event.type && (SDLK_SPACE==event.key.keysym.sym)){
@@ -88,6 +108,7 @@ void Game::handle_events() {
             if (numRotation>3){
                 numRotation=0;
             }
+
 
          }
 
@@ -111,7 +132,8 @@ void Game::draw() {
     informations_.texte(sdl_screen_);
 
     if (not currentPiece){
-        numPiece=rand()%7;
+        //numPiece=rand()%7;
+        numPiece=5;
         posX=3;
         posY=0;
         numRotation=0;
@@ -120,9 +142,25 @@ void Game::draw() {
         currentPiece=true;
     }
 
-    if (last_time<clock() && posY<TABLEAU_HAUTEUR-TAILLE){
-        posY+=1;
+    if (last_time<clock()){
+
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
+            if (posY<16){
+                posY+=1;
+            }
+            else{
+                bool estVide=true;
+                for(int k=0;k<4;k++){
+                    if (pieces[numPiece][numRotation][19-posY][k]!=0){
+                        estVide=false;
+                        //printf("%d %d\n",numRotation,posX);
+                    }
+                    //printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
+                }
+                if(estVide==true){
+                    posY+=1;
+                }
+            }
     }
     formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
     formes_.draw(pieces[numNextPiece][0],sdl_screen_, x_nextPiece, y_nextPiece);
