@@ -43,6 +43,7 @@ void Game::handle_events() {
 
          if (SDL_KEYDOWN==event.type && (SDLK_RIGHT==event.key.keysym.sym)) {
             //printf("%d %d\n",numRotation,posX);
+            //printf("%d \n",posX);
             if (posX<6){
                 posX+=1;
             }
@@ -53,7 +54,7 @@ void Game::handle_events() {
                         estVide=false;
                         //printf("%d %d\n",numRotation,posX);
                     }
-                    printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
+                    //printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
                 }
                 if(estVide==true){
                     posX+=1;
@@ -61,7 +62,7 @@ void Game::handle_events() {
             }
          }
          if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym)) {
-                //printf("%d %d\n",numRotation,posX);
+                //printf("%d \n",posX);
 
                 if (posX>0){
                     posX-=1;
@@ -71,9 +72,9 @@ void Game::handle_events() {
                     for(int k=0;k<4;k++){
                         if (pieces[numPiece][numRotation][k][-posX]!=0){
                             estVide=false;
-                            //printf("%d \n",pieces[numPiece][numRotation][k][-posX]);
+                            //printf("%d \n",-posX);
                         }
-                        printf("%d\n",pieces[numPiece][numRotation][k][-posX]);
+                        //printf("%d\n",-posX);
                     }
                     if(estVide==true){
                         posX-=1;
@@ -104,10 +105,19 @@ void Game::handle_events() {
          }
 
          if (SDL_KEYDOWN==event.type && (SDLK_SPACE==event.key.keysym.sym)){
+
             numRotation+=1;
             if (numRotation>3){
                 numRotation=0;
             }
+
+            if(posX<0){
+                posX=0;
+            }
+            if(posX>6){
+                posX=6;
+            }
+
 
 
          }
