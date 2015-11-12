@@ -30,7 +30,7 @@ void Tableau::render(SDL_Surface *screen, int zone[TABLEAU_LARGEUR][TABLEAU_HAUT
             rect.x = i*sq_w;
             rect.y = j*sq_h;
             if (zone[i][j]==1){
-                printf("i : %d / j : %d\n",i,j);
+                //printf("i : %d / j : %d\n",i,j);
                 SDL_FillRect(screen, &rect, SDL_MapRGB(screen->format, 0,255,0));
             }
             else {
