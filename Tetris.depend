@@ -50,7 +50,7 @@
 	"include/formes.h"
 	"include/informations.h"
 
-1445443079 /home/theophile/GitHub/Tetris/include/game.h
+1446735729 /home/theophile/GitHub/Tetris/include/game.h
 	<SDL/SDL.h>
 	"Tableau.h"
 	"../include/formes.h"
@@ -78,7 +78,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1446734380 source:/home/theophile/GitHub/Tetris/src/game.cpp
+1446978437 source:/home/theophile/GitHub/Tetris/src/game.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_ttf.h>
 	<iostream>
@@ -102,7 +102,7 @@
 	<SDL/SDL.h>
 	<SDL/SDL_ttf.h>
 
-1446729999 source:/home/theophile/GitHub/Tetris/src/informations.cpp
+1446735816 source:/home/theophile/GitHub/Tetris/src/informations.cpp
 	"../include/informations.h"
 	"../include/game.h"
 	<SDL/SDL.h>
