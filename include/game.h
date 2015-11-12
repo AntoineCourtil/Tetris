@@ -26,6 +26,8 @@ public:
     int posY;
     int numRotation;
     int numNextPiece;
+    Tableau tableau_;
+    int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR];
 
 private:
     SDL_Surface* sdl_screen_;
@@ -33,7 +35,6 @@ private:
     int width_;
     int height_;
     int bpp_;
-    Tableau tableau_;
     formes formes_;
     informations informations_;
     int numPiece;

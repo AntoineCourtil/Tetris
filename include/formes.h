@@ -1,6 +1,7 @@
 #ifndef FORMES_H
 #define FORMES_H
 #include <SDL/SDL.h>
+#include "../include/Tableau.h"
 
 
 const int NB_TYPES=7; //nombres de types de pièces que l'on a
@@ -11,6 +12,7 @@ class formes {
 public:
     formes();
     void draw(int piece[TAILLE][TAILLE], SDL_Surface *screen, int origine_x, int origine_y);
+    void freezePiece(int piece[TAILLE][TAILLE], SDL_Surface *screen, int posX, int posY, int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR]);
 
 private:
 

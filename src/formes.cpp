@@ -42,3 +42,17 @@ void formes::draw(int piece[TAILLE][TAILLE], SDL_Surface *screen, int origine_x,
 }
 
 
+void formes::freezePiece(int piece[TAILLE][TAILLE], SDL_Surface *screen, int posX, int posY, int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR])
+{
+    //printf("a");
+    int i;
+    int j;
+
+    for(j=0; j<=3; j++){
+        for(i=0; i<=3; i++){
+            if (piece[j][i]!=0) {
+                zone[posX+i][posY+j]=1;
+            }
+        }
+    }
+}

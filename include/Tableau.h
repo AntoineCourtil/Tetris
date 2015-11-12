@@ -6,21 +6,21 @@
 
 
 
-enum {LIBRE, FILLED};
 
 const int TABLEAU_HAUTEUR = 20;
 const int TABLEAU_LARGEUR = 10;
 const int DEPART_X = 3;
 const int DEPART_Y = 0;
-
+//int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR];
 
 
 class Tableau
 {
     public:
-        int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR];
+        //int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR];
         Tableau();
-        void render(SDL_Surface *screen);
+        void render(SDL_Surface *screen, int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR]);
+
 
     private:
 

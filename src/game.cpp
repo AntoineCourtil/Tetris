@@ -30,6 +30,17 @@ bool Game::init_sdl(const char* title, int width, int height, int bpp) {
     last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
     informations_.load_font();
 
+    int i;
+    int j;
+
+    for(i=0; i<TABLEAU_LARGEUR; i++) {
+        for(j=0; j<TABLEAU_HAUTEUR; j++) {
+            zone[i][j] = 0;
+            printf("#");
+        }
+        printf("\n");
+    }
+
     return true;
 }
 
@@ -127,18 +138,17 @@ void Game::handle_events() {
 void Game::draw() {
 
     SDL_FillRect(sdl_screen_, NULL, SDL_MapRGB(sdl_screen_->format, 255, 255, 255));
-    tableau_.render(sdl_screen_);
+    tableau_.render(sdl_screen_, zone);
     informations_.render(sdl_screen_,TABLEAU_LARGEUR,0);
     informations_.texte(sdl_screen_);
 
     if (not currentPiece){
-        numPiece=rand()%7;
+        numPiece=numNextPiece;
         //numPiece=5;
         posX=3;
         posY=0;
         numRotation=0;
         numNextPiece=rand()%7;
-        //informations_.nextPiece(sdl_screen_, numNextPiece);
         currentPiece=true;
     }
 
@@ -159,6 +169,10 @@ void Game::draw() {
                 }
                 if(estVide==true){
                     posY+=1;
+                }
+                else{
+                    formes_.freezePiece(pieces[numPiece][numRotation],sdl_screen_, posX, posY, zone);
+                    currentPiece=false;
                 }
             }
     }
