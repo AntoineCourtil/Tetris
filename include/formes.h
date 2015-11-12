@@ -49,8 +49,8 @@ static int pieces[NB_TYPES][NB_ROTATIONS][TAILLE][TAILLE]=
     {// I
         {
             {0,0,0,0},
-            {1,1,2,1},
             {0,0,0,0},
+            {1,1,2,1},
             {0,0,0,0}
         },
         {
@@ -61,8 +61,8 @@ static int pieces[NB_TYPES][NB_ROTATIONS][TAILLE][TAILLE]=
         },
         {
             {0,0,0,0},
-            {1,1,2,1},
             {0,0,0,0},
+            {1,1,2,1},
             {0,0,0,0}
         },
         {

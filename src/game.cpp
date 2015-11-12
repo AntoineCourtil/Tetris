@@ -67,6 +67,9 @@ void Game::handle_events() {
                     }
                     //printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
                 }
+
+
+
                 if(estVide==true){
                     posX+=1;
                 }
@@ -165,25 +168,39 @@ void Game::draw() {
     if (last_time<clock()){
 
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
+        bool estVide=true;
+        bool ligneVide=true;
+
+
+                printf("posY : %d \n",posY);
+                printf("posX : %d \n",posX);
+
             if (posY<16){
-                posY+=1;
+                for(int k=0;k<4;k++){
+                    if (zone[posX+k][posY+3]!=0){
+                        estVide=false;
+                    }
+                }
             }
             else{
-                bool estVide=true;
                 for(int k=0;k<4;k++){
                     if (pieces[numPiece][numRotation][19-posY][k]!=0){
                         estVide=false;
-                        //printf("%d %d\n",numRotation,posX);
                     }
-                    //printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
                 }
-                if(estVide==true){
-                    posY+=1;
+                for(int k=0;k<4;k++){
+                    if (zone[posX+k][posY+3]!=0){
+                        estVide=false;
+                    }
                 }
-                else{
-                    formes_.freezePiece(pieces[numPiece][numRotation],sdl_screen_, posX, posY, zone);
-                    currentPiece=false;
-                }
+            }
+
+            if(estVide==true){
+                posY+=1;
+            }
+            else{
+                formes_.freezePiece(pieces[numPiece][numRotation],sdl_screen_, posX, posY, zone);
+                currentPiece=false;
             }
     }
     formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
