@@ -99,22 +99,46 @@ void Game::handle_events() {
 
          if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) ) {
             //posY+=1;
+         bool estVide=true;
 
            if (posY<16){
-                posY+=1;
+                /*for(int k=0;k<4;k++){
+                    if (zone[posX+k][posY+3]!=0){
+                        estVide=false;
+                    }
+                }*/
+                for(int k=0;k<4;k++){
+                    //printf("%d ",zone[posX+k][posY+3]+pieces[numPiece][numRotation][3][k]);
+                    for(int j=0;j<4;j++){
+                        printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
+                            estVide=false;
+                        }
+                    }
+                    printf("\n");
+                }
+                printf("\n\n");
             }
             else{
-                bool estVide=true;
                 for(int k=0;k<4;k++){
                     if (pieces[numPiece][numRotation][19-posY][k]!=0){
                         estVide=false;
-                        //printf("%d %d\n",numRotation,posX);
                     }
-                    //printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
                 }
-                if(estVide==true){
-                    posY+=1;
+                for(int k=0;k<4;k++){
+                    printf("%d \n",zone[posX+k][posY+3]+pieces[numPiece][numRotation][19-posY][k]);
+                    if (zone[posX+k][posY+3]+pieces[numPiece][numRotation][19-posY][k]>1){
+                        estVide=false;
+                    }
                 }
+            }
+
+            if(estVide==true){
+                posY+=1;
+            }
+            else{
+                formes_.freezePiece(pieces[numPiece][numRotation],sdl_screen_, posX, posY, zone);
+                currentPiece=false;
             }
          }
 
@@ -169,7 +193,6 @@ void Game::draw() {
 
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
         bool estVide=true;
-        bool ligneVide=true;
 
 
                 printf("posY : %d \n",posY);
