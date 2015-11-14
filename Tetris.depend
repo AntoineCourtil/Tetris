@@ -23,7 +23,7 @@
 	"../include/informations.h"
 	<time.h>
 
-1447349144 source:/home/antoine/GitHub/Tetris/src/game.cpp
+1447512885 source:/home/antoine/GitHub/Tetris/src/game.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_ttf.h>
 	<iostream>
@@ -40,7 +40,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1447349243 /home/antoine/GitHub/Tetris/include/formes.h
+1447517760 /home/antoine/GitHub/Tetris/include/formes.h
 	<SDL/SDL.h>
 	"../include/Tableau.h"
 
