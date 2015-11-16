@@ -41,7 +41,7 @@ void informations::render(SDL_Surface *screen, int origine_x, int origine_y)
     }
 }
 
-void informations::texte(SDL_Surface *screen, int chrono)
+void informations::texte(SDL_Surface *screen, int chrono, int score)
 {
     SDL_Color clr_blanc = {255, 255, 255};
 
@@ -68,15 +68,26 @@ void informations::texte(SDL_Surface *screen, int chrono)
     position_txt_chrono.x = 12.5*sq_w;
     position_txt_chrono.y = 16*sq_h;
 
-    char temp[3];
-    sprintf(temp,"%d", chrono);
+    char char_chrono[3];
+    sprintf(char_chrono,"%d", chrono);
 
-    txt_chrono = TTF_RenderText_Blended(police, temp, clr_blanc);
+    txt_chrono = TTF_RenderText_Blended(police, char_chrono, clr_blanc);
+
+    SDL_Surface *score_score = NULL;
+    SDL_Rect position_score_score;
+    position_score_score.x = 12.5*sq_w;
+    position_score_score.y = 11*sq_h;
+
+    char char_score[3];
+    sprintf(char_score,"%d", score);
+
+    score_score = TTF_RenderText_Blended(police, char_score, clr_blanc);
 
     SDL_BlitSurface(txt_next, NULL, screen, &position_txt_next);
     SDL_BlitSurface(txt_score, NULL, screen, &position_txt_score);
     SDL_BlitSurface(txt_time, NULL, screen, &position_txt_time);
     SDL_BlitSurface(txt_chrono, NULL, screen, &position_txt_chrono);
+    SDL_BlitSurface(score_score, NULL, screen, &position_score_score);
 
 }
 

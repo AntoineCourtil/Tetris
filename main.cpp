@@ -12,6 +12,7 @@ int main(int argc, char* args[]) {
     game.currentPiece=false;
     game.gameover=false;
     game.chrono=100;
+    game.score=0;
     game.numNextPiece=rand()%7;
 
     while (game.running()) {

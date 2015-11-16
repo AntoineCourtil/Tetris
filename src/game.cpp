@@ -210,7 +210,7 @@ void Game::draw() {
     SDL_FillRect(sdl_screen_, NULL, SDL_MapRGB(sdl_screen_->format, 255, 255, 255));
     tableau_.render(sdl_screen_, zone);
     informations_.render(sdl_screen_,TABLEAU_LARGEUR,0);
-    informations_.texte(sdl_screen_, chrono);
+    informations_.texte(sdl_screen_, chrono, score);
 
     if(gameover==true){
         informations_.printGameover(sdl_screen_);
@@ -227,6 +227,7 @@ void Game::draw() {
             }
 
             if (ligne>=TABLEAU_LARGEUR){
+                score+=10;
                 for(int x=i; x>0; x--) {
                     for(int y=0; y<TABLEAU_LARGEUR; y++) {
                         zone[y][x] = zone[y][x-1];
