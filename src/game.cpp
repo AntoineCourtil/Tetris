@@ -102,22 +102,13 @@ void Game::handle_events() {
          bool estVide=true;
 
            if (posY<16){
-                /*for(int k=0;k<4;k++){
-                    if (zone[posX+k][posY+3]!=0){
-                        estVide=false;
-                    }
-                }*/
                 for(int k=0;k<4;k++){
-                    //printf("%d ",zone[posX+k][posY+3]+pieces[numPiece][numRotation][3][k]);
                     for(int j=0;j<4;j++){
-                        printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
                         if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
                             estVide=false;
                         }
                     }
-                    printf("\n");
                 }
-                printf("\n\n");
             }
             else{
                 for(int k=0;k<4;k++){
@@ -126,9 +117,10 @@ void Game::handle_events() {
                     }
                 }
                 for(int k=0;k<4;k++){
-                    printf("%d \n",zone[posX+k][posY+3]+pieces[numPiece][numRotation][19-posY][k]);
-                    if (zone[posX+k][posY+3]+pieces[numPiece][numRotation][19-posY][k]>1){
-                        estVide=false;
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
+                            estVide=false;
+                        }
                     }
                 }
             }
@@ -194,27 +186,14 @@ void Game::draw() {
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
         bool estVide=true;
 
-
-                printf("posY : %d \n",posY);
-                printf("posX : %d \n",posX);
-
             if (posY<16){
-                /*for(int k=0;k<4;k++){
-                    if (zone[posX+k][posY+3]!=0){
-                        estVide=false;
-                    }
-                }*/
                 for(int k=0;k<4;k++){
-                    //printf("%d ",zone[posX+k][posY+3]+pieces[numPiece][numRotation][3][k]);
                     for(int j=0;j<4;j++){
-                        printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
                         if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
                             estVide=false;
                         }
                     }
-                    printf("\n");
                 }
-                printf("\n\n");
             }
             else{
                 for(int k=0;k<4;k++){
@@ -223,9 +202,10 @@ void Game::draw() {
                     }
                 }
                 for(int k=0;k<4;k++){
-                    printf("%d \n",zone[posX+k][posY+3]+pieces[numPiece][numRotation][19-posY][k]);
-                    if (zone[posX+k][posY+3]+pieces[numPiece][numRotation][19-posY][k]>1){
-                        estVide=false;
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
+                            estVide=false;
+                        }
                     }
                 }
             }
@@ -240,7 +220,6 @@ void Game::draw() {
     }
     formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
     formes_.draw(pieces[numNextPiece][0],sdl_screen_, x_nextPiece, y_nextPiece);
-    //printf("%d",pieces[numPiece][numRotation][0][0]);
     SDL_Flip(sdl_screen_);
 
 }
