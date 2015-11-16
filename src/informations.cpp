@@ -9,7 +9,7 @@ void informations::load_font()
 {
     TTF_Init();
     //printf("TTF_Init: %s\n", TTF_GetError());
-    police = TTF_OpenFont("/home/theophile/GitHub/Tetris/src/Aquawax Medium Trial.ttf", 20);
+    police = TTF_OpenFont("/home/antoine/GitHub/Tetris/src/Aquawax Medium Trial.ttf", 20);
 }
 
 void informations::render(SDL_Surface *screen, int origine_x, int origine_y)

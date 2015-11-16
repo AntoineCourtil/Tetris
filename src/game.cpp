@@ -159,7 +159,6 @@ void Game::handle_events() {
          if (SDL_KEYDOWN==event.type && (SDLK_SPACE==event.key.keysym.sym)){
 
             bool rotatePiece = true;
-            printf("%d \n",numRotation);
 
             if(numRotation<3){
                 for(int k=0;k<4;k++){
@@ -218,6 +217,24 @@ void Game::draw() {
     }
 
     if (not currentPiece){
+
+        int ligne;
+        for(int i=0; i<TABLEAU_HAUTEUR; i++) {
+            int ligne=0;
+
+            for(int j=0; j<TABLEAU_LARGEUR; j++) {
+                ligne+=zone[j][i];
+            }
+
+            if (ligne>=TABLEAU_LARGEUR){
+                for(int x=i; x>0; x--) {
+                    for(int y=0; y<TABLEAU_LARGEUR; y++) {
+                        zone[y][x] = zone[y][x-1];
+                    }
+                }
+            }
+        }
+
         numPiece=numNextPiece;
         posX=3;
         posY=0;
