@@ -53,9 +53,45 @@ void Game::handle_events() {
     while (SDL_PollEvent(&event)) {
 
          if (SDL_KEYDOWN==event.type && (SDLK_RIGHT==event.key.keysym.sym)) {
-            //printf("%d %d\n",numRotation,posX);
-            //printf("%d \n",posX);
+            printf("PosX : %d \n",posX);
+
+            bool estVide=true;
+
             if (posX<6){
+                for(int k=0;k<4;k++){
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
+                            estVide=false;
+                        }
+                        printf("%d ",zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]);
+                    }
+                    printf("\n");
+                }
+            }
+            else{
+                for(int k=0;k<4;k++){
+                    if (pieces[numPiece][numRotation][k][9-posX]!=0){
+                        estVide=false;
+                    }
+                }
+                for(int k=0;k<4;k++){
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
+                            estVide=false;
+                        }
+                        printf("%d ",zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]);
+                    }
+                    printf("\n");
+                }
+            }
+
+            if(estVide==true){
+                posX+=1;
+            }
+
+
+
+            /*if (posX<6){
                 posX+=1;
             }
             else{
@@ -73,28 +109,44 @@ void Game::handle_events() {
                 if(estVide==true){
                     posX+=1;
                 }
-            }
+            }*/
          }
          if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym)) {
-                //printf("%d \n",posX);
+                printf("PosX : %d \n",posX);
 
-                if (posX>0){
-                    posX-=1;
-                }
-                else {
-                    bool estVide=true;
-                    for(int k=0;k<4;k++){
-                        if (pieces[numPiece][numRotation][k][-posX]!=0){
+                bool estVide=true;
+
+           if (posX>0){
+                for(int k=0;k<4;k++){
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
                             estVide=false;
-                            //printf("%d \n",-posX);
                         }
-                        //printf("%d\n",-posX);
+                        printf("%d ",zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]);
                     }
-                    if(estVide==true){
-                        posX-=1;
+                    printf("\n");
+                }
+            }
+            else{
+                for(int k=0;k<4;k++){
+                    if (pieces[numPiece][numRotation][k][-posX]!=0){
+                        estVide=false;
                     }
                 }
+                for(int k=0;k<4;k++){
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
+                            estVide=false;
+                        }
+                        printf("%d ",zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]);
+                    }
+                    printf("\n");
+                }
+            }
 
+            if(estVide==true){
+                posX-=1;
+            }
          }
 
          if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) ) {
@@ -104,10 +156,12 @@ void Game::handle_events() {
            if (posY<16){
                 for(int k=0;k<4;k++){
                     for(int j=0;j<4;j++){
-                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]==2 && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
                             estVide=false;
                         }
+                        printf("%d ",zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]);
                     }
+                    printf("\n");
                 }
             }
             else{
@@ -118,7 +172,7 @@ void Game::handle_events() {
                 }
                 for(int k=0;k<4;k++){
                     for(int j=0;j<4;j++){
-                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1 && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
                             estVide=false;
                         }
                     }
@@ -189,10 +243,12 @@ void Game::draw() {
             if (posY<16){
                 for(int k=0;k<4;k++){
                     for(int j=0;j<4;j++){
-                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]==2 && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
                             estVide=false;
                         }
+                        printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
                     }
+                    printf("\n");
                 }
             }
             else{
@@ -203,10 +259,12 @@ void Game::draw() {
                 }
                 for(int k=0;k<4;k++){
                     for(int j=0;j<4;j++){
-                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1  && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
                             estVide=false;
                         }
+                        printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
                     }
+                    printf("\n");
                 }
             }
 
