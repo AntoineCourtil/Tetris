@@ -11,6 +11,7 @@ int main(int argc, char* args[]) {
     game.init_sdl("Tetris", 500, 500, 32);
     game.currentPiece=false;
     game.gameover=false;
+    game.chrono=100;
     game.numNextPiece=rand()%7;
 
     while (game.running()) {

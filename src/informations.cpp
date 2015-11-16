@@ -9,7 +9,7 @@ void informations::load_font()
 {
     TTF_Init();
     //printf("TTF_Init: %s\n", TTF_GetError());
-    police = TTF_OpenFont("/home/antoine/GitHub/Tetris/src/Aquawax Medium Trial.ttf", 20);
+    police = TTF_OpenFont("/home/antoine/GitHub/Tetris/src/BebasNeue.otf", 30);
 }
 
 void informations::render(SDL_Surface *screen, int origine_x, int origine_y)
@@ -41,7 +41,7 @@ void informations::render(SDL_Surface *screen, int origine_x, int origine_y)
     }
 }
 
-void informations::texte(SDL_Surface *screen)
+void informations::texte(SDL_Surface *screen, int chrono)
 {
     SDL_Color clr_blanc = {255, 255, 255};
 
@@ -63,9 +63,20 @@ void informations::texte(SDL_Surface *screen)
     position_txt_time.y = 15*sq_h;
     txt_time = TTF_RenderText_Blended(police, "Time", clr_blanc);
 
+    SDL_Surface *txt_chrono = NULL;
+    SDL_Rect position_txt_chrono;
+    position_txt_chrono.x = 12.5*sq_w;
+    position_txt_chrono.y = 16*sq_h;
+
+    char temp[3];
+    sprintf(temp,"%d", chrono);
+
+    txt_chrono = TTF_RenderText_Blended(police, temp, clr_blanc);
+
     SDL_BlitSurface(txt_next, NULL, screen, &position_txt_next);
     SDL_BlitSurface(txt_score, NULL, screen, &position_txt_score);
     SDL_BlitSurface(txt_time, NULL, screen, &position_txt_time);
+    SDL_BlitSurface(txt_chrono, NULL, screen, &position_txt_chrono);
 
 }
 

@@ -27,6 +27,7 @@ public:
     int posY;
     int numRotation;
     int numNextPiece;
+    int chrono;
     Tableau tableau_;
     int zone[TABLEAU_LARGEUR][TABLEAU_HAUTEUR];
 

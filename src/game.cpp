@@ -210,7 +210,7 @@ void Game::draw() {
     SDL_FillRect(sdl_screen_, NULL, SDL_MapRGB(sdl_screen_->format, 255, 255, 255));
     tableau_.render(sdl_screen_, zone);
     informations_.render(sdl_screen_,TABLEAU_LARGEUR,0);
-    informations_.texte(sdl_screen_);
+    informations_.texte(sdl_screen_, chrono);
 
     if(gameover==true){
         informations_.printGameover(sdl_screen_);
@@ -244,6 +244,13 @@ void Game::draw() {
     }
 
     if (last_time<clock()){
+
+        if (chrono<=0){
+            gameover=true;
+        }
+        else{
+            chrono-=1;
+        }
 
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
         bool estVide=true;
