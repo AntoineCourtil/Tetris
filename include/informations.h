@@ -10,6 +10,7 @@ class informations
         informations();
         void render(SDL_Surface *screen, int origine_x, int origine_y);
         void texte(SDL_Surface *screen);
+        void printGameover(SDL_Surface *screen);
         void load_font();
 
 

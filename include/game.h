@@ -22,6 +22,7 @@ public:
     void clean();
     bool running();
     bool currentPiece;
+    bool gameover;
     int posX;
     int posY;
     int numRotation;

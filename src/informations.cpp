@@ -69,7 +69,16 @@ void informations::texte(SDL_Surface *screen)
 
 }
 
-/*void informations::nextPiece(SDL_Surface *screen)
+void informations::printGameover(SDL_Surface *screen)
 {
-    //
-}*/
+    SDL_Color clr_blanc = {255, 255, 255};
+
+    SDL_Surface *txt_gameover = NULL;
+    SDL_Rect position_txt_gameover;
+    position_txt_gameover.x = 11*sq_w;
+    position_txt_gameover.y = 8*sq_h;
+    txt_gameover = TTF_RenderText_Blended(police, "GAME OVER", clr_blanc);
+
+
+    SDL_BlitSurface(txt_gameover, NULL, screen, &position_txt_gameover);
+}

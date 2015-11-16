@@ -51,6 +51,8 @@ bool Game::running() {
 void Game::handle_events() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
+      if (gameover==false){
+
 
          if (SDL_KEYDOWN==event.type && (SDLK_RIGHT==event.key.keysym.sym)) {
             printf("PosX : %d \n",posX);
@@ -88,29 +90,9 @@ void Game::handle_events() {
             if(estVide==true){
                 posX+=1;
             }
-
-
-
-            /*if (posX<6){
-                posX+=1;
-            }
-            else{
-                bool estVide=true;
-                for(int k=0;k<4;k++){
-                    if (pieces[numPiece][numRotation][k][9-posX]!=0){
-                        estVide=false;
-                        //printf("%d %d\n",numRotation,posX);
-                    }
-                    //printf("%d\n",pieces[numPiece][numRotation][k][9-posX]);
-                }
-
-
-
-                if(estVide==true){
-                    posX+=1;
-                }
-            }*/
          }
+
+
          if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym)) {
                 printf("PosX : %d \n",posX);
 
@@ -209,7 +191,7 @@ void Game::handle_events() {
          /*if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
 
          }*/
-
+      }
          running_ = !(SDL_QUIT==event.type || (SDL_KEYDOWN==event.type && SDLK_ESCAPE==event.key.keysym.sym));
 
 
@@ -224,6 +206,10 @@ void Game::draw() {
     tableau_.render(sdl_screen_, zone);
     informations_.render(sdl_screen_,TABLEAU_LARGEUR,0);
     informations_.texte(sdl_screen_);
+
+    if(gameover==true){
+        informations_.printGameover(sdl_screen_);
+    }
 
     if (not currentPiece){
         numPiece=numNextPiece;
@@ -240,40 +226,56 @@ void Game::draw() {
         last_time=clock()+(NUM_SECONDS * CLOCKS_PER_SEC);
         bool estVide=true;
 
-            if (posY<16){
+
+            if (posY==0){
                 for(int k=0;k<4;k++){
                     for(int j=0;j<4;j++){
-                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]==2 && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
+                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1){
                             estVide=false;
+                            gameover=true;
                         }
-                        printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
                     }
-                    printf("\n");
-                }
-            }
-            else{
-                for(int k=0;k<4;k++){
-                    if (pieces[numPiece][numRotation][19-posY][k]!=0){
-                        estVide=false;
-                    }
-                }
-                for(int k=0;k<4;k++){
-                    for(int j=0;j<4;j++){
-                        if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1  && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
-                            estVide=false;
-                        }
-                        printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
-                    }
-                    printf("\n");
                 }
             }
 
-            if(estVide==true){
-                posY+=1;
-            }
-            else{
-                formes_.freezePiece(pieces[numPiece][numRotation],sdl_screen_, posX, posY, zone);
-                currentPiece=false;
+
+            if (gameover==false){
+
+                if (posY<16){
+                    for(int k=0;k<4;k++){
+                        for(int j=0;j<4;j++){
+                            if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]==2 && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
+                                estVide=false;
+                            }
+                            printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
+                        }
+                        printf("\n");
+                    }
+                }
+                else{
+                    for(int k=0;k<4;k++){
+                        if (pieces[numPiece][numRotation][19-posY][k]!=0){
+                            estVide=false;
+                        }
+                    }
+                    for(int k=0;k<4;k++){
+                        for(int j=0;j<4;j++){
+                            if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1  && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
+                                estVide=false;
+                            }
+                            printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
+                        }
+                        printf("\n");
+                    }
+                }
+
+                if(estVide==true){
+                    posY+=1;
+                }
+                else{
+                    formes_.freezePiece(pieces[numPiece][numRotation],sdl_screen_, posX, posY, zone);
+                    currentPiece=false;
+                }
             }
     }
     formes_.draw(pieces[numPiece][numRotation],sdl_screen_, posX, posY);
