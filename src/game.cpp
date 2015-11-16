@@ -36,9 +36,7 @@ bool Game::init_sdl(const char* title, int width, int height, int bpp) {
     for(i=0; i<TABLEAU_LARGEUR; i++) {
         for(j=0; j<TABLEAU_HAUTEUR; j++) {
             zone[i][j] = 0;
-            printf("#");
         }
-        printf("\n");
     }
 
     return true;
@@ -55,7 +53,6 @@ void Game::handle_events() {
 
 
          if (SDL_KEYDOWN==event.type && (SDLK_RIGHT==event.key.keysym.sym)) {
-            printf("PosX : %d \n",posX);
 
             bool estVide=true;
 
@@ -65,9 +62,7 @@ void Game::handle_events() {
                         if (zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
                             estVide=false;
                         }
-                        printf("%d ",zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]);
                     }
-                    printf("\n");
                 }
             }
             else{
@@ -81,9 +76,7 @@ void Game::handle_events() {
                         if (zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
                             estVide=false;
                         }
-                        printf("%d ",zone[posX+j+1][posY+k]+pieces[numPiece][numRotation][k][j]);
                     }
-                    printf("\n");
                 }
             }
 
@@ -94,9 +87,7 @@ void Game::handle_events() {
 
 
          if (SDL_KEYDOWN==event.type && (SDLK_LEFT==event.key.keysym.sym)) {
-                printf("PosX : %d \n",posX);
-
-                bool estVide=true;
+           bool estVide=true;
 
            if (posX>0){
                 for(int k=0;k<4;k++){
@@ -104,9 +95,7 @@ void Game::handle_events() {
                         if (zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
                             estVide=false;
                         }
-                        printf("%d ",zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]);
                     }
-                    printf("\n");
                 }
             }
             else{
@@ -120,9 +109,8 @@ void Game::handle_events() {
                         if (zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]==2){
                             estVide=false;
                         }
-                        printf("%d ",zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]);
                     }
-                    printf("\n");
+
                 }
             }
 
@@ -132,7 +120,7 @@ void Game::handle_events() {
          }
 
          if (SDL_KEYDOWN==event.type && (SDLK_DOWN==event.key.keysym.sym) ) {
-            //posY+=1;
+
          bool estVide=true;
 
            if (posY<16){
@@ -141,9 +129,7 @@ void Game::handle_events() {
                         if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]==2 && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
                             estVide=false;
                         }
-                        printf("%d ",zone[posX+j-1][posY+k]+pieces[numPiece][numRotation][k][j]);
                     }
-                    printf("\n");
                 }
             }
             else{
@@ -172,9 +158,32 @@ void Game::handle_events() {
 
          if (SDL_KEYDOWN==event.type && (SDLK_SPACE==event.key.keysym.sym)){
 
-            numRotation+=1;
-            if (numRotation>3){
-                numRotation=0;
+            bool rotatePiece = true;
+            printf("%d \n",numRotation);
+
+            if(numRotation<3){
+                for(int k=0;k<4;k++){
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j][posY+k]+pieces[numPiece][numRotation+1][k][j] >1 && (zone[posX+j][posY+k]==0 || zone[posX+j][posY+k]==1)){
+                            rotatePiece=false;
+                        }
+                    }
+                }
+                if (rotatePiece){
+                    numRotation+=1;
+                }
+            }
+            else{
+                for(int k=0;k<4;k++){
+                    for(int j=0;j<4;j++){
+                        if (zone[posX+j][posY+k]+pieces[numPiece][0][k][j]>1 && (zone[posX+j][posY+k]==0 || zone[posX+j][posY+k]==1)){
+                            rotatePiece=false;
+                        }
+                    }
+                }
+                if (rotatePiece){
+                    numRotation=0;
+                }
             }
 
             if(posX<0){
@@ -183,14 +192,11 @@ void Game::handle_events() {
             if(posX>6){
                 posX=6;
             }
-
-
+            if(posY>16){
+                posY=16;
+            }
 
          }
-
-         /*if (SDL_MOUSEBUTTONDOWN==event.type && (SDL_BUTTON_LEFT==event.button.button || SDL_BUTTON_RIGHT==event.button.button || SDL_BUTTON_MIDDLE==event.button.button)) {
-
-         }*/
       }
          running_ = !(SDL_QUIT==event.type || (SDL_KEYDOWN==event.type && SDLK_ESCAPE==event.key.keysym.sym));
 
@@ -213,7 +219,6 @@ void Game::draw() {
 
     if (not currentPiece){
         numPiece=numNextPiece;
-        //numPiece=5;
         posX=3;
         posY=0;
         numRotation=0;
@@ -247,9 +252,7 @@ void Game::draw() {
                             if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]==2 && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
                                 estVide=false;
                             }
-                            printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
                         }
-                        printf("\n");
                     }
                 }
                 else{
@@ -263,9 +266,7 @@ void Game::draw() {
                             if (zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]>1  && (zone[posX+j][posY+k+1]==0 || zone[posX+j][posY+k+1]==1)){
                                 estVide=false;
                             }
-                            printf("%d ",zone[posX+j][posY+k+1]+pieces[numPiece][numRotation][k][j]);
                         }
-                        printf("\n");
                     }
                 }
 
